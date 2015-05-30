@@ -21,6 +21,4 @@ Use Tool->Arduino->Open User Settings to set
  * board - The vendor:architecture:board. See the [Arduino CLI docs](https://github.com/arduino/Arduino/blob/ide-1.5.x/build/shared/manpage.adoc). eg arduino:avr:uno
  * port - The serialport to upload with. eg /dev/tty.usbmodem1411
 
-Board is slightly confusing, but its the vendor:architecture:board. 
-
-Command + B Builds and uploads to your board. Command + Shift + B lets you select to only build.
+While viewing a .ino file, use Command + B builds and uploads to your board. Command + Shift + B lets you select to just build.
