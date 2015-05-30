@@ -1,0 +1,85 @@
+<!--
+    Pulled from https://github.com/nasser/arduino.tmbundle/blob/master/Syntaxes/Arduino.tmLanguage
+
+    Copyright (c) 2010 Ramsey Nasser
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>fileTypes</key>
+    <array>
+        <string>pde</string>
+        <string>ino</string>
+    </array>
+    <key>foldingStartMarker</key>
+    <string>/\*\*|\{\s*$</string>
+    <key>foldingStopMarker</key>
+    <string>\*\*/|^\s*\}</string>
+    <key>name</key>
+    <string>Arduino</string>
+    <key>patterns</key>
+    <array>
+        <dict>
+            <key>include</key>
+            <string>#special_block</string>
+        </dict>
+        <dict>
+            <key>include</key>
+            <string>source.c++</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(HIGH|LOW|INPUT|OUTPUT|DEC|BIN|HEX|OCT|BYTE|PI|HALF_PI|TWO_PI|LSBFIRST|MSBFIRST|CHANGE|FALLING|RISING|DEFAULT|EXTERNAL|INTERNAL|INTERNAL1V1|INTERNAL2V56|null)\b</string>
+            <key>name</key>
+            <string>constant.c++.arduino</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(boolean|byte|word)\b</string>
+            <key>name</key>
+            <string>storage.c++.arduino</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(abs|acos|asin|atan|atan2|ceil|constrain|cos|degrees|exp|floor|log|map|max|min|radians|random|randomSeed|round|sin|sq|sqrt|tan|bitRead|bitWrite|bitSet|bitClear|bit|highByte|lowByte|analogReference|analogRead|analogWrite|attachInterrupt|detachInterrupt|delay|delayMicroseconds|digitalWrite|digitalRead|interrupts|millis|micros|noInterrupts|noTone|pinMode|pulseIn|shiftOut|tone|begin|end|read|print|println|available|flush|setup|loop)\b</string>
+            <key>name</key>
+            <string>support.function.c++.arduino</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(Serial\d?)\b</string>
+            <key>name</key>
+            <string>support.class.c++.arduino</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(private|protected|public)</string>
+            <key>name</key>
+            <string>storage.modifier.c++.arduino</string>
+        </dict>
+    </array>
+    <key>scopeName</key>
+    <string>source.arduino</string>
+    <key>uuid</key>
+    <string>b8a42677-fb5b-4f15-b050-b4245d5f87ac</string>
+</dict>
+</plist>

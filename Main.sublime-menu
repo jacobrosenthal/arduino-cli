@@ -1,0 +1,23 @@
+[
+    {
+        "id": "tools",
+        "children":
+        [
+            {
+                "id": "arduino-cli",
+                "caption": "Arduino",
+                "children":
+                [
+                    {
+                        "caption": "Open User Settings",
+                        "command": "open_file", "args":
+                        {
+                            "file": "${packages}/User/arduino-cli.sublime-settings"
+                        }
+                    }
+                ]
+            }
+        ]
+        
+    }
+]
