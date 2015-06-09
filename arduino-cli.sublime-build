@@ -1,16 +1,22 @@
 {
-   "_comment1": "using targets instead of cmd for two reasons, One PATH is difficult in OSX gui",
-   "_comment2": "but not at all from python, Two I dont know a way to get user settings from here",
+   "_comment": "using targets instead of cmd for two reasons. One PATH is difficult in OSX gui",
+   "_comment": "though not at all from python. Two I dont know a way to get user settings from here",
     "target": "arduinoupload",
 
-    "_comment2": "it seems only working_dir and cmd vars are expanded so smuggle file through working_dir",
+    "_comment": "it seems only working_dir and cmd vars are expanded so smuggle file through working_dir",
     "working_dir": "${file}",
 
     "selector": "source.arduino",
     
+    "_comment": "doesnt seem to work yet. might be impossible as arduino doesnt return full path name of file",
+    "file_regex": "b'(\\w*.\\w*):(\\d*):(\\d*):(.*)",
+
     "variants": [
         { "name": "just build",
           "target": "arduinoverify",
+        },
+        { "name": "build and upload",
+          "target": "arduinoupload",
         }
     ]
 }

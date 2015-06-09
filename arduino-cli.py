@@ -1,18 +1,21 @@
 import subprocess, shlex, sublime, sublime_plugin
 
-class ArduinouverifyCommand(sublime_plugin.WindowCommand):
+class ArduinoverifyCommand(sublime_plugin.WindowCommand):
     def run(self, **kwargs):
-        sublime.set_timeout_async(self.go(kwargs), 0)
+        sublime.set_timeout_async(lambda: self.go(kwargs), 0)
 
-    def go(self, kwargs):
-        ino = kwargs["working_dir"]
+    def go(self, options):
+        ino = options["working_dir"]
         settings = sublime.load_settings('arduino-cli.sublime-settings')
         path = settings.get('path')
         board = settings.get('board')
-        tmp = settings.get('tmp')
         port = settings.get('port')
 
-        command_line = path + "Arduino --board " + board + " --pref build.path=" + tmp +  " --verify " + ino
+        command_line = path + "/Arduino --board " + board + " --verify " + ino
+
+        if settings.get('sketchbook.path'):
+            command_line += " --pref sketchbook.path=" + settings.get('sketchbook.path')
+        
         print(command_line)
         args = shlex.split(command_line)
         try:
@@ -24,17 +27,20 @@ class ArduinouverifyCommand(sublime_plugin.WindowCommand):
 
 class ArduinouploadCommand(sublime_plugin.WindowCommand):
     def run(self, **kwargs):
-        sublime.set_timeout_async(self.go(kwargs), 0)
+        sublime.set_timeout_async(lambda: self.go(kwargs), 0)
 
-    def go(self, kwargs):
-        ino = kwargs["working_dir"]
+    def go(self, options):
+        ino = options["working_dir"]
         settings = sublime.load_settings('arduino-cli.sublime-settings')
         path = settings.get('path')
         board = settings.get('board')
-        tmp = settings.get('tmp')
         port = settings.get('port')
 
-        command_line = path + "Arduino --board " + board + " --pref build.path=" + tmp +  " --upload " + ino + " --port " + port
+        command_line = path + "/Arduino --board " + board + " --upload " + ino + " --port " + port
+
+        if settings.get('sketchbook.path'):
+            command_line += " --pref sketchbook.path=" + settings.get('sketchbook.path')
+
         print(command_line)
         args = shlex.split(command_line)
         try:

@@ -7,18 +7,15 @@ NOTE: OSX only right now, PRs welcome.
 
 INSTALL
 -------
-```bash
-cd '/Users/YOUR USER/Library/Application\ Support/Sublime\ Text\ 3/Packages'
-git clone https://github.com/jacobrosenthal/arduino-cli.git
-```
+Use [Package Control](https://packagecontrol.io/installation) to install. Within Sublime Text, bring up the Command Palette and type install. Among the commands you should see Package Control: Install Package. If that command is not highlighted, use the keyboard or mouse to select it. There will be a pause of a few seconds while Package Control fetches the list of available plugins. When the plugin list appears, type arduino-cli
 
 USE
 ---
 Use Tool->Arduino->Open User Settings to set
 
- * tmp - The temporary directory to build in, be careful, Arduino may rm -rf this. eg /Users/jacobrosenthal/Downloads/build/
- * path - The path to the Arduino executable. eg /Applications/Arduino.app/Contents/MacOS/
+ * path - The path to the Arduino executable. eg /Applications/Arduino.app/Contents/MacOS
  * board - The vendor:architecture:board. See the [Arduino CLI docs](https://github.com/arduino/Arduino/blob/ide-1.5.x/build/shared/manpage.adoc). eg arduino:avr:uno
  * port - The serialport to upload with. eg /dev/tty.usbmodem1411
+ * sketchbook.path - (optional) The directory to look for additonal libraries and architectures in. eg /Users/jacobrosenthal/Documents/firmware-pinoccio/
 
-While viewing a .ino file, use Command + B builds and uploads to your board. Command + Shift + B lets you select to just build.
+While viewing a .ino file, use Command + b builds and upload to your board. Command + Shift + B lets you select to just build.
