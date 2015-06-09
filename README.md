@@ -18,4 +18,13 @@ Use Tool->Arduino->Open User Settings to set
  * port - The serialport to upload with. eg /dev/tty.usbmodem1411
  * sketchbook.path - (optional) The directory to look for additonal libraries and architectures in. eg /Users/jacobrosenthal/Documents/firmware-pinoccio/
 
+ These are the defaults as of this writing, but yours might look like:
+ ```json
+{
+	"path": "/Applications/Arduino.app/Contents/MacOS",
+	"board": "arduino:avr:uno",
+	"port": "/dev/tty.usbmodem1421"
+} 
+ ```
+
 While viewing a .ino file, use Command + b builds and upload to your board. Command + Shift + B lets you select to just build.
