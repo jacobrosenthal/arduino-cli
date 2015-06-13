@@ -49,3 +49,7 @@ Or you can override sublime's settings on a per project basis by adding this to 
 	}
 }
 ```
+
+CONSOLE
+--------
+If you want feedback on what happened, use View->Show Console. Sadly I dont have the regex working yet to bring this into the status bar. See [this issue](https://github.com/jacobrosenthal/arduino-cli/issues/1) if you think you can help
