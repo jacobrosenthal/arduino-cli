@@ -7,14 +7,17 @@ class ArduinoverifyCommand(sublime_plugin.WindowCommand):
     def go(self, options):
         ino = options["working_dir"]
         settings = sublime.load_settings('arduino-cli.sublime-settings')
-        path = settings.get('path')
-        board = settings.get('board')
-        port = settings.get('port')
+
+        print(sublime.active_window().active_view().settings().get("board"))
+        
+        path = sublime.active_window().active_view().settings().get('path', settings.get('path'))
+        board = sublime.active_window().active_view().settings().get('board', settings.get('board'))
+        port = sublime.active_window().active_view().settings().get('port', settings.get('port'))
 
         command_line = path + "/Arduino --board " + board + " --verify " + ino
 
-        if settings.get('sketchbook.path'):
-            command_line += " --pref sketchbook.path=" + settings.get('sketchbook.path')
+        if sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path')):
+            command_line += " --pref sketchbook.path=" + sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path'))
         
         print(command_line)
         args = shlex.split(command_line)
@@ -32,14 +35,14 @@ class ArduinouploadCommand(sublime_plugin.WindowCommand):
     def go(self, options):
         ino = options["working_dir"]
         settings = sublime.load_settings('arduino-cli.sublime-settings')
-        path = settings.get('path')
-        board = settings.get('board')
-        port = settings.get('port')
+        path = sublime.active_window().active_view().settings().get('path', settings.get('path'))
+        board = sublime.active_window().active_view().settings().get('board', settings.get('board'))
+        port = sublime.active_window().active_view().settings().get('port', settings.get('port'))
 
         command_line = path + "/Arduino --board " + board + " --upload " + ino + " --port " + port
 
-        if settings.get('sketchbook.path'):
-            command_line += " --pref sketchbook.path=" + settings.get('sketchbook.path')
+        if sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path')):
+            command_line += " --pref sketchbook.path=" + sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path'))
 
         print(command_line)
         args = shlex.split(command_line)
