@@ -7,8 +7,6 @@ class ArduinoverifyCommand(sublime_plugin.WindowCommand):
     def go(self, options):
         ino = options["working_dir"]
         settings = sublime.load_settings('arduino-cli.sublime-settings')
-
-        print(sublime.active_window().active_view().settings().get("board"))
         
         path = sublime.active_window().active_view().settings().get('path', settings.get('path'))
         board = sublime.active_window().active_view().settings().get('board', settings.get('board'))
