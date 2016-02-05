@@ -24,9 +24,9 @@ class ArduinoCommand(sublime_plugin.WindowCommand):
 
         sketchbook_path = get_setting('sketchbook.path')
         if sketchbook_path:
-            args += ["--pref", "sketchbook.path='{}'".format(sketchbook_path)]
+            args += ["--pref", "sketchbook.path={}".format(sketchbook_path)]
 
-        args += ["--{}".format(self.action), "'{}'".format(ino)]
+        args += ["--{}".format(self.action), ino]
 
         print(args)
         try:
