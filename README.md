@@ -24,7 +24,7 @@ Settings include:
 If board and port are not specified anywhere, the arduino executable will pull the settings from those last set in the graphical IDE.
 
 
-You can set them two places. Use Tool->Arduino->Open User Settings. These are the internal defaults as of this writing, but you might override them explicitly like this:
+You can set them two places. Use Tool->Arduino->Open User Settings. This is an example configuration for OS X:
 ```json
 {
 	"path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
