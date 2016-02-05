@@ -36,8 +36,8 @@ class ArduinoCommand(sublime_plugin.WindowCommand):
         else:
             print(a)
 
-class ArduinoverifyCommand(sublime_plugin.WindowCommand):
+class ArduinoverifyCommand(ArduinoCommand):
     action = "verify"
 
-class ArduinouploadCommand(sublime_plugin.WindowCommand):
+class ArduinouploadCommand(ArduinoCommand):
     action = "upload"
