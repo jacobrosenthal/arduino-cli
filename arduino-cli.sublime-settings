@@ -1,5 +1,0 @@
-{
-	"path": "/Applications/Arduino.app/Contents/MacOS",
-	"board": "arduino:avr:uno",
-	"port": "/dev/tty.usbmodem1411"
-}

@@ -1,53 +1,43 @@
-import subprocess, shlex, sublime, sublime_plugin
+import subprocess, sublime, sublime_plugin
+
+def get_setting(name):
+    settings = sublime.load_settings('arduino-cli.sublime-settings')
+    return sublime.active_window().active_view().settings().get(name, settings.get(name))
+
+class ArduinoCommand(sublime_plugin.WindowCommand):
+
+    def run(self, **kwargs):
+        sublime.set_timeout_async(lambda: self.go(kwargs), 0)
+
+    def go(self, options):
+        ino = options["working_dir"]
+
+        args = [get_setting('path')]
+
+        board = get_setting('board')
+        if board:
+            args += ["--board", board]
+
+        port = get_setting('port')
+        if port:
+            args += ["--port", port]
+
+        sketchbook_path = get_setting('sketchbook.path')
+        if sketchbook_path:
+            args += ["--pref", "sketchbook.path='{}'".format(sketchbook_path)]
+
+        args += ["--{}".format(self.action), "'{}'".format(ino)]
+
+        print(args)
+        try:
+            a = subprocess.check_output(args, stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print(e.output)
+        else:
+            print(a)
 
 class ArduinoverifyCommand(sublime_plugin.WindowCommand):
-    def run(self, **kwargs):
-        sublime.set_timeout_async(lambda: self.go(kwargs), 0)
-
-    def go(self, options):
-        ino = options["working_dir"]
-        settings = sublime.load_settings('arduino-cli.sublime-settings')
-        
-        path = sublime.active_window().active_view().settings().get('path', settings.get('path'))
-        board = sublime.active_window().active_view().settings().get('board', settings.get('board'))
-        port = sublime.active_window().active_view().settings().get('port', settings.get('port'))
-
-        command_line = path + "/Arduino --board " + board + " --verify " + ino
-
-        if sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path')):
-            command_line += " --pref sketchbook.path=" + sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path'))
-        
-        print(command_line)
-        args = shlex.split(command_line)
-        try:
-            a = subprocess.check_output(args, stderr=subprocess.STDOUT)
-        except subprocess.CalledProcessError as e:
-            print(e.output)
-        else:
-            print(a)
+    action = "verify"
 
 class ArduinouploadCommand(sublime_plugin.WindowCommand):
-    def run(self, **kwargs):
-        sublime.set_timeout_async(lambda: self.go(kwargs), 0)
-
-    def go(self, options):
-        ino = options["working_dir"]
-        settings = sublime.load_settings('arduino-cli.sublime-settings')
-        path = sublime.active_window().active_view().settings().get('path', settings.get('path'))
-        board = sublime.active_window().active_view().settings().get('board', settings.get('board'))
-        port = sublime.active_window().active_view().settings().get('port', settings.get('port'))
-
-        command_line = path + "/Arduino --board " + board + " --upload " + ino + " --port " + port
-
-        if sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path')):
-            command_line += " --pref sketchbook.path=" + sublime.active_window().active_view().settings().get('sketchbook.path', settings.get('sketchbook.path'))
-
-        print(command_line)
-        args = shlex.split(command_line)
-        try:
-            a = subprocess.check_output(args, stderr=subprocess.STDOUT)
-        except subprocess.CalledProcessError as e:
-            print(e.output)
-        else:
-            print(a)
-
+    action = "upload"

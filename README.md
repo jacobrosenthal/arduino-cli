@@ -16,16 +16,18 @@ While viewing a .ino file, use Command + b builds and upload to your board. Comm
 SETTINGS
 --------
 Settings include:
- * path - The path to the Arduino executable. eg /Applications/Arduino.app/Contents/MacOS
- * board - The vendor:architecture:board. See the [Arduino CLI docs](https://github.com/arduino/Arduino/blob/ide-1.5.x/build/shared/manpage.adoc). eg arduino:avr:uno
- * port - The serialport to upload with. eg /dev/tty.usbmodem1411
+ * path - The path to the Arduino executable. eg /Applications/Arduino.app/Contents/MacOS/Arduino
+ * board - (optional) The vendor:architecture:board. See the [Arduino CLI docs](https://github.com/arduino/Arduino/blob/ide-1.5.x/build/shared/manpage.adoc). eg arduino:avr:uno
+ * port - (optional) The serialport to upload with. eg /dev/tty.usbmodem1411
  * sketchbook.path - (optional) The directory to look for additonal libraries and architectures in. eg /Users/jacobrosenthal/Documents/firmware-pinoccio/
+
+If board and port are not specified anywhere, the arduino executable will pull the settings from those last set in the graphical IDE.
 
 
 You can set them two places. Use Tool->Arduino->Open User Settings. These are the internal defaults as of this writing, but you might override them explicitly like this:
 ```json
 {
-	"path": "/Applications/Arduino.app/Contents/MacOS",
+	"path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
 	"board": "arduino:avr:uno",
 	"port": "/dev/tty.usbmodem1421"
 } 
@@ -42,7 +44,7 @@ Or you can override sublime's settings on a per project basis by adding this to 
 	],
 	"settings":
 	{
-		"path": "/Applications/Arduino.app/Contents/MacOS",
+		"path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
 		"board":"pinoccio:avr:atmega256rfr2",
 		"port":"/dev/tty.usbmodem1411",
 		"sketchbook.path":"/Users/jacobrosenthal/Documents/firmware-pinoccio"
