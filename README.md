@@ -3,7 +3,7 @@ Arduino Build System for Sublime Text 3
 
 Utilizes the new Arduino command line interface and as such requires Arduino to be installed. 
 
-NOTE: OSX only right now, PRs welcome.
+NOTE - If you're updating from v0.0.3 you may need to alter your path to the Arduino executable, instead of the Arduino folder as in previous versions. See below for examples.
 
 INSTALL
 -------
@@ -21,10 +21,10 @@ Settings include:
  * port - (optional) The serialport to upload with. eg /dev/tty.usbmodem1411
  * sketchbook.path - (optional) The directory to look for additonal libraries and architectures in. eg /Users/jacobrosenthal/Documents/firmware-pinoccio/
 
-If board and port are not specified anywhere, the arduino executable will pull the settings from those last set in the graphical IDE.
+All settings are optional with Path being set internally to likely candidate based on OS. If board and port are not specified, the arduino executable will pull the settings from those last set in the graphical IDE. However you may wish to override
 
 
-You can set them two places. Use Tool->Arduino->Open User Settings. This is an example configuration for OS X:
+You can set them two places. Use Tool->Arduino->Open User Settings. This is an example override configuration for OS X:
 ```json
 {
 	"path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
@@ -44,10 +44,10 @@ Or you can override sublime's settings on a per project basis by adding this to 
 	],
 	"settings":
 	{
-		"path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
-		"board":"pinoccio:avr:atmega256rfr2",
-		"port":"/dev/tty.usbmodem1411",
-		"sketchbook.path":"/Users/jacobrosenthal/Documents/firmware-pinoccio"
+    "path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
+    "board": "arduino:avr:uno",
+    "port": "/dev/tty.usbmodem1421",
+    "sketchbook.path": "/Users/jacobrosenthal/Documents/Arduino"
 	}
 }
 ```
