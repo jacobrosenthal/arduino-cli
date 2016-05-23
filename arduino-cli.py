@@ -28,6 +28,5 @@ class ArduinocliCommand(sublime_plugin.WindowCommand):
         args += options['cmd']
 
         options['cmd'] = args
-        options['shell'] = True
 
         self.window.run_command("exec", options)
