@@ -33,6 +33,10 @@ class ArduinoCommand(sublime_plugin.WindowCommand):
 
         args += ["--{}".format(self.action), ino]
 
+        #open console panel
+        if get_setting('show.console'):
+            sublime.active_window().run_command("show_panel", {"panel": "console"})
+
         #get start time
         now = time.strftime("%H:%M:%S")
         print("\n----BEGIN----"+now+"\n")
