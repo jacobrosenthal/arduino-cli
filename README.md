@@ -29,7 +29,8 @@ You can set them two places. Use Tool->Arduino->Open User Settings. This is an e
 {
 	"path": "/Applications/Arduino.app/Contents/MacOS/Arduino",
 	"board": "arduino:avr:uno",
-	"port": "/dev/tty.usbmodem1421"
+	"port": "/dev/tty.usbmodem1421",
+	"show.console": true
 } 
 ```
 
