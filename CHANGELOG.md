@@ -1,3 +1,7 @@
+v0.0.5
+------
+* Become proper build system with automated console popup. Thanks @lfdebrux
+
 v0.0.4
 ------
 * Add Windows and Liux support. Thanks @lfdebrux
