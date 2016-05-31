@@ -1,22 +1,21 @@
 {
-   "_comment": "using targets instead of cmd for two reasons. One PATH is difficult in OSX gui",
-   "_comment": "though not at all from python. Two I dont know a way to get user settings from here",
-    "target": "arduinoupload",
-
-    "_comment": "it seems only working_dir and cmd vars are expanded so smuggle file through working_dir",
-    "working_dir": "${file}",
+    "target": "arduinocli",
+    "cmd": ["--verify", "$file"],
 
     "selector": "source.arduino",
-    
-    "_comment": "doesnt seem to work yet. might be impossible as arduino doesnt return full path name of file",
+
+    // doesnt seem to work yet. might be impossible as arduino doesnt return full path name of file
     "file_regex": "b'(\\w*.\\w*):(\\d*):(\\d*):(.*)",
 
     "variants": [
+
         { "name": "just build",
-          "target": "arduinoverify",
+          "cmd": ["--verify", "$file"],
         },
+
         { "name": "build and upload",
-          "target": "arduinoupload",
-        }
+          "cmd": ["--upload", "$file"],
+        },
+
     ]
 }

@@ -4,13 +4,12 @@ def get_setting(name):
     settings = sublime.load_settings('arduino-cli.sublime-settings')
     return sublime.active_window().active_view().settings().get(name, settings.get(name))
 
-class ArduinoCommand(sublime_plugin.WindowCommand):
+class ArduinocliCommand(sublime_plugin.WindowCommand):
 
     def run(self, **kwargs):
         sublime.set_timeout_async(lambda: self.go(kwargs), 0)
 
     def go(self, options):
-        ino = options["working_dir"]
 
         args = [get_setting('path')]
 
@@ -26,18 +25,8 @@ class ArduinoCommand(sublime_plugin.WindowCommand):
         if sketchbook_path:
             args += ["--pref", "sketchbook.path={}".format(sketchbook_path)]
 
-        args += ["--{}".format(self.action), ino]
+        args += options['cmd']
 
-        print(args)
-        try:
-            a = subprocess.check_output(args, stderr=subprocess.STDOUT)
-        except subprocess.CalledProcessError as e:
-            print(e.output)
-        else:
-            print(a)
+        options['cmd'] = args
 
-class ArduinoverifyCommand(ArduinoCommand):
-    action = "verify"
-
-class ArduinouploadCommand(ArduinoCommand):
-    action = "upload"
+        self.window.run_command("exec", options)
