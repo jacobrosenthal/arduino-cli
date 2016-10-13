@@ -18,7 +18,7 @@ class ArduinocliCommand(sublime_plugin.WindowCommand):
             args += ["--board", board]
 
         port = get_setting('port')
-        if port:
+        if (port and "--verify" not in options['cmd']):
             args += ["--port", port]
 
         sketchbook_path = get_setting('sketchbook.path')
