@@ -11,8 +11,8 @@ Use [Package Control](https://packagecontrol.io/installation) to install. Within
 
 USE
 ---
-While viewing a .ino file, use Command + b builds and upload to your board. Command + Shift + B lets you 
-select to just build.
+While viewing a .ino/.cpp/.h file in an Arduino project directory, use Command + B (or Ctrl+B) to build and upload the sketch to your board.
+Command + Shift + B (or Ctrl+Shift+B) lets you select to just build.
 
 SETTINGS
 --------
