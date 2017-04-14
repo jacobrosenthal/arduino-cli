@@ -1,4 +1,5 @@
 import subprocess, sublime, sublime_plugin
+import glob
 
 def get_setting(name):
     settings = sublime.load_settings('arduino-cli.sublime-settings')
@@ -11,7 +12,13 @@ class ArduinocliCommand(sublime_plugin.WindowCommand):
 
     def go(self, options):
 
-        args = [get_setting('path')]
+        compiler_path = get_setting('path')
+        if "?" in compiler_path or "*" in compiler_path:
+            compiler_paths = glob.glob(compiler_path)
+            assert len(compiler_paths) == 1, "There should be only one compiler matching the given path (See arduino-cli (Platform).sublime-settings file"
+            compiler_path = compiler_paths[0]
+
+        args = [compiler_path]
 
         board = get_setting('board')
         if board:
