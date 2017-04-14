@@ -17,7 +17,7 @@ Command + Shift + B (or Ctrl+Shift+B) lets you select to just build.
 SETTINGS
 --------
 Settings include:
- * path - The path to the Arduino executable, may include wildcards. eg /Applications/Arduino.app/Contents/MacOS/Arduino or "C:\Program Files&ast;\Arduino\arduino-debug.exe"
+ * path - The path to the Arduino executable, may include wildcards. eg /Applications/Arduino.app/Contents/MacOS/Arduino or "C:\Program Files&ast;\Arduino\arduino&#95;debug.exe"
  * board - (optional) The package:arch:board. See the [Arduino CLI docs](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc). eg arduino:avr:uno
  * port - (optional) The serialport to upload with. eg /dev/tty.usbmodem1411
  * sketchbook.path - (optional) The directory to look for additonal libraries and architectures in. eg /Users/jacobrosenthal/Documents/firmware-pinoccio/
