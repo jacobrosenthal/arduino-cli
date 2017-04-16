@@ -11,13 +11,13 @@ Use [Package Control](https://packagecontrol.io/installation) to install. Within
 
 USE
 ---
-While viewing a .ino file, use Command + b builds and upload to your board. Command + Shift + B lets you 
-select to just build.
+While viewing a .ino/.cpp/.h file in an Arduino project directory, use Command + B (or Ctrl+B) to build and upload the sketch to your board.
+Command + Shift + B (or Ctrl+Shift+B) lets you select to just build.
 
 SETTINGS
 --------
 Settings include:
- * path - The path to the Arduino executable. eg /Applications/Arduino.app/Contents/MacOS/Arduino
+ * path - The path to the Arduino executable, may include wildcards. eg /Applications/Arduino.app/Contents/MacOS/Arduino or "C:\Program Files&ast;\Arduino\arduino&#95;debug.exe"
  * board - (optional) The package:arch:board. See the [Arduino CLI docs](https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc). eg arduino:avr:uno
  * port - (optional) The serialport to upload with. eg /dev/tty.usbmodem1411
  * sketchbook.path - (optional) The directory to look for additonal libraries and architectures in. eg /Users/jacobrosenthal/Documents/firmware-pinoccio/
